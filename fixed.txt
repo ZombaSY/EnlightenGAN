@@ -1,0 +1,25 @@
+models/single_model.py
+.data[0] -> .item()
+
+
+
+utils/visualizer.py
+removed 'visdom' module
+
+
+
+data/unaligned_dataset.py
+line 85
+        A_img = self.A_imgs[index % self.A_size].convert('RGB')
+        B_img = self.B_imgs[index % self.B_size].convert('RGB')
+
+
+
+data/base_dataset.py
+else:
+    transforms.Resize((opt.fineSize, opt.fineSize))
+
+
+
+scripts/scripts.py
+added --resize_or_crop='no' \

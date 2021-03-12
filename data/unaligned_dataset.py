@@ -57,8 +57,11 @@ class UnalignedDataset(BaseDataset):
     def initialize(self, opt):
         self.opt = opt
         self.root = opt.dataroot
-        self.dir_A = os.path.join(opt.dataroot, opt.phase + 'A')
-        self.dir_B = os.path.join(opt.dataroot, opt.phase + 'B')
+
+        # self.dir_A = os.path.join(opt.dataroot, opt.phase + 'A')  # sunyong
+        # self.dir_B = os.path.join(opt.dataroot, opt.phase + 'B') # sunyong
+        self.dir_A = os.path.join(opt.dataroot + '/A') # sunyong
+        self.dir_B = os.path.join(opt.dataroot + '/B') # sunyong
 
         # self.A_paths = make_dataset(self.dir_A)
         # self.B_paths = make_dataset(self.dir_B)
@@ -78,8 +81,8 @@ class UnalignedDataset(BaseDataset):
 
         # A_img = Image.open(A_path).convert('RGB')
         # B_img = Image.open(B_path).convert('RGB')
-        A_img = self.A_imgs[index % self.A_size]
-        B_img = self.B_imgs[index % self.B_size]
+        A_img = self.A_imgs[index % self.A_size].convert('RGB')
+        B_img = self.B_imgs[index % self.B_size].convert('RGB')
         A_path = self.A_paths[index % self.A_size]
         B_path = self.B_paths[index % self.B_size]
         # A_size = A_img.size

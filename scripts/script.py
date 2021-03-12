@@ -9,7 +9,7 @@ opt = parser.parse_args()
 
 if opt.train:
 	os.system("python train.py \
-		--dataroot ../final_dataset \
+		--dataroot /home/ubuntu/Volume/Sunyong/Danbi/dataset_CURL/210308_paper_dataset/dataset/train \
 		--no_dropout \
 		--name enlightening \
 		--model single \
@@ -24,7 +24,7 @@ if opt.train:
 		--fineSize 320 \
         --patchSize 32 \
 		--skip 1 \
-		--batchSize 32 \
+		--batchSize 4 \
         --self_attention \
 		--use_norm 1 \
 		--use_wgan 0 \
@@ -33,14 +33,15 @@ if opt.train:
         --times_residual \
 		--instance_norm 0 \
 		--vgg 1 \
+		--resize_or_crop='no' \
         --vgg_choose relu5_1 \
-		--gpu_ids 0,1,2 \
+		--gpu_ids 0,1 \
 		--display_port=" + opt.port)
 
 elif opt.predict:
 	for i in range(1):
 	        os.system("python predict.py \
-	        	--dataroot ../test_dataset \
+	        	--dataroot /home/ubuntu/Volume/Sunyong/Danbi/dataset_CURL/210308_paper_dataset/dataset/test \
 	        	--name enlightening \
 	        	--model single \
 	        	--which_direction AtoB \
